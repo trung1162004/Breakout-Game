@@ -5,15 +5,15 @@ var context = myCanvas.getContext("2d");
 /*------------------Block----------------------*/
 let block = [];
 let imgBlock = [
-    "/img/block1.png",
-    "/img/block2.png",
-    "/img/block3.png",
-    "/img/block4.png",
-    "/img/block5.png",
-    "/img/block6.png",
-    "/img/block7.png",
-    "/img/block8.png",
-    "/img/block9.png"
+    "../../img/block1.png",
+    "../../img/block2.png",
+    "../../img/block3.png",
+    "../../img/block4.png",
+    "../../img/block5.png",
+    "../../img/block6.png",
+    "../../img/block7.png",
+    "../../img/block8.png",
+    "../../img/block9.png"
 ];
 // Hàm tạo block Level 1: Lưới cơ bản
 function createBlockLevel1() {
@@ -214,7 +214,7 @@ let ball = {
     ready: false
 };
 
-ball.img.src = '/img/ball.png';
+ball.img.src = '../../img/ball.png';
 ball.img.onload = function () {
     ball.ready = true;
 };
@@ -264,7 +264,7 @@ let paddle = {
     ready: false
 };
 
-paddle.img.src = '/img/paddle.png';
+paddle.img.src = '../../img/paddle.png';
 paddle.img.onload = function () {
     paddle.ready = true;
 };
