@@ -239,17 +239,15 @@ function startBall() {
     }
 
 }
-function addRandomAngle() {
-    // Đổi góc bật ngẫu nhiên nhẹ
-    let angle = Math.random() * (Math.PI / 6) - (Math.PI / 12); // -15° đến +15°
+function vachamPaddle() {
+    const collidePoint = ball.x - (paddle.x + 100 / 2);
+    const normalize = Math.max(-1, Math.min(1, collidePoint / (100 / 2)));
+    const maxBounceAngle = Math.PI / 3;
+    const bounceAngle = normalize * maxBounceAngle;
 
-    let speed = Math.sqrt(ball.dx * ball.dx + ball.dy * ball.dy);
-
-    let currentAngle = Math.atan2(ball.dy, ball.dx);
-    let newAngle = currentAngle + angle;
-
-    ball.dx = Math.cos(newAngle) * speed;
-    ball.dy = Math.sin(newAngle) * speed;
+    const speed = Math.sqrt(ball.dx * ball.dx + ball.dy * ball.dy);
+    ball.dx = speed * Math.sin(bounceAngle);
+    ball.dy = -speed * Math.cos(bounceAngle);
 }
 
 /*-------------------End Ball-------------------------*/
@@ -259,7 +257,7 @@ function addRandomAngle() {
 
 let paddle = {
     x: 300,
-    y: 540,
+    y: 440,
     img: new Image(),
     ready: false
 };
@@ -276,8 +274,8 @@ function startPaddle() {
             ball.x < paddle.x + 100 && ball.x + 25 > paddle.x &&
             ball.y < paddle.y + 20 && ball.y + 25 > paddle.y
         ) {
-            ball.dy = -ball.dy;
-            addRandomAngle();
+            // ball.dy = -ball.dy;
+            vachamPaddle();
             const vachamSound = document.getElementById("vachamSound");
             vachamSound.currentTime = 0;
             vachamSound.play();
